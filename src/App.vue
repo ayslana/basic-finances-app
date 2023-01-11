@@ -1,15 +1,31 @@
 <template>
   <v-app id="app" class="background">
+    <navbar v-if="!['Login'].includes($route.name)" :name="$route.name" />
+    <sidebar v-if="!['Login'].includes($route.name)" />
     <v-main>
       <router-view />
     </v-main>
+    <div class="overflow-visible float-end">
+      <error-alert />
+      <success-alert />
+    </div>
   </v-app>
 </template>
 
 <script>
+import Navbar from "@/components/menu/NavBar.vue";
+import Sidebar from "@/components/menu/SideBar.vue";
+import ErrorAlert from "@/components/notifications/ErrorAlert.vue";
+import SuccessAlert from "@/components/notifications/SuccessAlert.vue";
+
 export default {
   name: "App",
-  components: {},
+  components: {
+    Navbar,
+    Sidebar,
+    ErrorAlert,
+    SuccessAlert,
+  },
   data() {
     return {};
   },
