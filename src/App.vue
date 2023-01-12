@@ -2,7 +2,7 @@
   <v-app id="app" class="background">
     <navbar v-if="!['Login'].includes($route.name)" :name="$route.name" />
     <sidebar v-if="!['Login'].includes($route.name)" />
-    <v-main>
+    <v-main class="background">
       <router-view />
     </v-main>
     <div class="overflow-visible float-end">
