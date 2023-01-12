@@ -19,6 +19,7 @@ export default new Vuetify({
         base: "#f2f4f5",
         base_dark: "#dadfe0",
         text: "#13141F",
+        login: "#161724",
       },
       dark: {
         primary: "#F23568",
@@ -32,6 +33,7 @@ export default new Vuetify({
         base: "#161724",
         base_dark: "#11121C",
         text: "#EEEEEE",
+        login: "#161724",
       },
     },
   },
