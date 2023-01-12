@@ -2,9 +2,14 @@
   <v-container fluid class="d-flex fill-height" style="flex-direction: column">
     <v-row>
       <v-col cols="6" class="primary"
-        ><v-img src="@/assets/login_asset.png"></v-img
+        ><v-img src="@/assets/loginAsset.png"></v-img
       ></v-col>
       <v-col cols="6" align="center" align-self="center">
+        <v-row justify="center" class="pb-12"
+          ><span class="text-h2 primary--text font-weight-bold"
+            >WorldWallet</span
+          >
+        </v-row>
         <v-row class="py-3 mx-3">
           <v-text-field
             v-model="login.email"
