@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <v-row align="center">
+    <v-row justify="center">
       <v-col cols="12">
         <div class="base_dark pa-4">
           <finances-table />
