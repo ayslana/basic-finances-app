@@ -9,7 +9,12 @@
       id="sidebar"
     >
       <v-list dense nav>
-        <v-list-item-group class="py-12" color="primary">
+        <v-list-item-group
+          class="py-12"
+          color="primary"
+          v-model="itemSelected"
+          mandatory
+        >
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
@@ -49,6 +54,7 @@ export default {
   component: {},
   data() {
     return {
+      itemSelected: 2,
       items: [
         {
           title: "Home",
