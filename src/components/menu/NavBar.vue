@@ -1,10 +1,6 @@
 <template>
   <v-card flat>
     <v-app-bar flat color="base" absolute app>
-      <v-app-bar-nav-icon
-        class="d-lg-none d-xl-none"
-        @click="toggleDrawer(true)"
-      ></v-app-bar-nav-icon>
       <v-toolbar-title
         class="flex text-start text-h4 text--text font-weight-bold"
         >{{ name }}</v-toolbar-title
@@ -34,13 +30,12 @@ export default {
   mounted() {
     this.darkModeOn();
   },
-
   computed: {
     ...mapGetters("login", ["getUserName"]),
-    ...mapGetters("menu", ["getDrawer", "getDarkMode"]),
+    ...mapGetters("menu", ["getDarkMode"]),
   },
   methods: {
-    ...mapActions("menu", ["setDrawer", "setDarkMode"]),
+    ...mapActions("menu", ["setDarkMode"]),
 
     darkMode() {
       this.$vuetify.theme.dark = !this.$vuetify.theme.dark;
@@ -51,10 +46,6 @@ export default {
     darkModeOn() {
       this.$vuetify.theme.dark = this.getDarkMode;
       this.tougle = this.getDarkMode;
-    },
-
-    toggleDrawer(value) {
-      this.$store.dispatch("menu/setDrawer", value);
     },
   },
 };
