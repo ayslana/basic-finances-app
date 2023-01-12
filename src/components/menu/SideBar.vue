@@ -1,15 +1,15 @@
 <template>
   <v-card width="256" flat>
     <v-navigation-drawer
+      permanent
+      :mini-variant="miniResponsive"
       floating
-      :temporary="miniResponsive"
       app
       color="base_dark"
       id="sidebar"
-      v-model="drawerModel"
     >
       <v-list dense nav>
-        <v-list-item-group color="primary">
+        <v-list-item-group class="py-12" color="primary">
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
@@ -42,7 +42,7 @@
 </template>
 <script>
 import router from "@/router";
-import { mapActions, mapGetters } from "vuex";
+import { mapActions } from "vuex";
 
 export default {
   name: "SibeBarComponent",
@@ -51,18 +51,12 @@ export default {
     return {
       items: [
         {
-          title: "Dashboard",
+          title: "Home",
           icon: "mdi-view-dashboard-outline",
-          url: "/dashboard",
+          url: "/home",
         },
       ],
     };
-  },
-  props: {
-    relative: {
-      type: Boolean,
-      default: false,
-    },
   },
   methods: {
     ...mapActions("login", ["logout"]),
@@ -78,17 +72,8 @@ export default {
     },
   },
   computed: {
-    ...mapGetters("menu", ["getDrawer"]),
     miniResponsive() {
       return this.$vuetify.breakpoint.smAndDown;
-    },
-    drawerModel: {
-      get() {
-        return this.$store.state.menu.drawer;
-      },
-      set(value) {
-        this.$store.dispatch("menu/setDrawer", value);
-      },
     },
   },
 };
