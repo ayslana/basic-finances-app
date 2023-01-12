@@ -1,6 +1,6 @@
 import { getJwtToken } from "../jwtToken";
-import router from "../../router";
-import  env  from "../../../env"
+import router from "@/router";
+import env from "@/env";
 
 export class HttpRequest {
   url = "";
@@ -55,6 +55,7 @@ export class HttpRequest {
 
   async evaluateToken() {
     if (!this.token && router.app.$route.name !== "Login") {
+      // await router.replace("/");
     }
   }
 
@@ -72,8 +73,8 @@ export class HttpRequest {
 
   getHeaders() {
     const headers = new Headers();
-    headers.append("Authorization", `Bearer ${this.token}`);
-    headers.append("Content-Type", "application/json");
+    // headers.append("Authorization", `Bearer ${this.token}`);
+    headers.append("Content-Type", "application/json", "charset=utf-8");
     return headers;
   }
 
@@ -82,6 +83,10 @@ export class HttpRequest {
       const status = response.status;
       await this.evaluateIfResponseStatusWasUnauthorized(response);
       const data = this.getResponseData(await response.text());
+      // Object.keys(JSON.parse(JSON.stringify(localStorage))).forEach((l) =>
+      //   localStorage.removeItem(l)
+      // );
+      // await router.replace("/mensagens");
       return { data, status };
     };
   }
@@ -91,6 +96,7 @@ export class HttpRequest {
       Object.keys(JSON.parse(JSON.stringify(localStorage))).forEach((item) =>
         localStorage.removeItem(item)
       );
+      // await router.replace("/");
       throw new Error("The token has expired or the credentials are invalid.");
     }
   }
