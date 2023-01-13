@@ -1,4 +1,3 @@
-import { getJwtToken } from "../jwtToken";
 import router from "@/router";
 import env from "@/env";
 
@@ -38,7 +37,6 @@ export class HttpRequest {
 
   async request() {
     console.group(`Requisição ${this.method} para ${this.url}`);
-    this.setToken();
     await this.evaluateToken();
     const { baseUrl, url } = this;
     const requestUrl = baseUrl + url;
@@ -49,9 +47,6 @@ export class HttpRequest {
       .finally(() => console.groupEnd);
   }
 
-  setToken() {
-    this.token = getJwtToken();
-  }
 
   async evaluateToken() {
     if (!this.token && router.app.$route.name !== "Login") {
