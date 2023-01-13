@@ -47,7 +47,6 @@ export class HttpRequest {
       .finally(() => console.groupEnd);
   }
 
-
   async evaluateToken() {
     if (!this.token && router.app.$route.name !== "Login") {
       // await router.replace("/");
