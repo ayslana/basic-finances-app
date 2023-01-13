@@ -58,7 +58,6 @@
               class="white--text login"
               style="text-transform: none !important; font-weight: bolder"
               :loading="isLoading"
-              :disabled="disabledField"
               @click="doLogin()"
               >Login
             </v-btn>
@@ -123,15 +122,6 @@ export default {
     },
     doLogin() {
       this.login(this.modelLogin);
-    },
-  },
-  computed: {
-    disabledField() {
-      if (this.modelLogin.login === "" || this.modelLogin.password === "") {
-        return true;
-      } else {
-        return false;
-      }
     },
   },
 };
