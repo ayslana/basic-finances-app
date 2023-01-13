@@ -2,17 +2,6 @@
   <div class="my-8" v-if="getCurrencies">
     <v-card-title class="text-h6 text--text"
       >Câmbio das Moedas
-      <v-col align="end" class="py-0">
-        <v-btn
-          outlined
-          elevation="0"
-          color="primary"
-          class="text-truncate"
-          style="text-transform: none !important; font-weight: bolder"
-          @click="openGenerateReportDialog"
-          >Gerar Relatório
-        </v-btn>
-      </v-col>
     </v-card-title>
     <v-data-table
       :headers="headers"
@@ -26,7 +15,6 @@
           color="transparent"
           class="text-truncate"
           style="max-width: 130px"
-          @click="openLineChartDialog"
         >
           {{ item.name }}
         </v-chip>
@@ -44,6 +32,7 @@
       <template v-slot:[`item.variation`]="{ item }">
         <v-chip
           :color="item.variation >= 0 ? 'green' : 'red'"
+          @click="openLineChartDialog(item.buy, item.sell)"
           class="white--text"
         >
           {{ item.variation }}
@@ -51,13 +40,14 @@
       </template>
     </v-data-table>
     <v-dialog
-      v-model="dialogGenerateReport"
+      v-model="lineChartDialog"
       scrollable
       max-width="720"
       transition="dialog-bottom-transition"
     >
       <line-chart-dialog
         :key="reRender"
+        :variation="variation"
         @closeLineChartDialog="closeLineChartDialog"
       />
     </v-dialog>
@@ -81,6 +71,7 @@ export default {
     LineChartDialog,
   },
   data: () => ({
+    variation: [],
     lineChartDialog: false,
     reRender: 0,
     red: null,
@@ -120,7 +111,11 @@ export default {
       await this.requestFinanceData();
     },
 
-    openLineChartDialog() {
+    openLineChartDialog(buy, sell) {
+      var variation = {};
+      variation.Compra = buy;
+      variation.Venda = sell;
+      this.variation = variation;
       this.lineChartDialog = true;
       this.reRender += 1;
     },
