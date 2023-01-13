@@ -14,7 +14,7 @@
 import FinancesTable from "@/components/home/FinancesTable.vue";
 
 export default {
-  name: "DashBoard",
+  name: "HomeView",
   components: {
     FinancesTable,
   },
