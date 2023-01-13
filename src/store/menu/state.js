@@ -1,4 +1,3 @@
 export default {
-  drawer: true,
-  darkMode: false,
+  darkMode: true,
 };
