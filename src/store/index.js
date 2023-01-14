@@ -3,7 +3,7 @@ import Vuex from "vuex";
 import VuexPersistence from "vuex-persist";
 import notifications from "./notifications";
 import register from "./register";
-import login from "./auth";
+import auth from "./auth";
 import menu from "./menu";
 import home from "./home";
 
@@ -18,7 +18,7 @@ export default new Vuex.Store({
     namespaced: true,
     notifications,
     register,
-    login,
+    auth,
     menu,
     home,
   },
