@@ -7,8 +7,8 @@ export default {
     return state.token;
   },
 
-  getUserName(state) {
-    return state.userData.name;
+  getUserData(state) {
+    return state.userData;
   },
 
   getIsLoading(state) {
