@@ -30,7 +30,6 @@
               outlined
               dense
               required
-              :rules="emailRules"
             ></v-text-field>
           </v-col>
         </v-row>
@@ -42,7 +41,6 @@
               outlined
               dense
               required
-              :rules="passwordRules"
               :type="showPassword ? 'text' : 'password'"
               :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
               @click:append="showPassword = !showPassword"
@@ -73,7 +71,6 @@
                 text
                 style="text-transform: none !important; font-weight: bolder"
                 :class="hover ? 'accent--text' : 'login--text'"
-                :loading="isLoading"
                 @click="openRegisterDialog()"
                 >Cadastre-se.
               </v-btn>
@@ -106,13 +103,14 @@ export default {
   data: () => ({
     dialogRegister: false,
     showPassword: false,
+    isLoading: false,
     modelLogin: {
       login: "",
       password: "",
     },
   }),
   methods: {
-    ...mapActions("login", ["login"]),
+    ...mapActions("auth", ["login"]),
 
     openRegisterDialog() {
       this.dialogRegister = true;
@@ -120,8 +118,10 @@ export default {
     closeRegisterDialog() {
       this.dialogRegister = false;
     },
-    doLogin() {
-      this.login(this.modelLogin);
+    async doLogin() {
+      this.isLoading = true;
+      await this.login(this.modelLogin);
+      this.isLoading = false;
     },
   },
 };
