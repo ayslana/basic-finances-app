@@ -1,7 +1,12 @@
 <template>
   <v-app id="app" class="background">
-    <navbar v-if="!['Login'].includes($route.name)" :name="$route.name" />
-    <sidebar v-if="!['Login'].includes($route.name)" />
+    <navbar
+      v-if="!['Login'].includes($route.name) && !['404'].includes($route.name)"
+      :name="$route.name"
+    />
+    <sidebar
+      v-if="!['Login'].includes($route.name) && !['404'].includes($route.name)"
+    />
     <v-main class="background">
       <router-view />
     </v-main>
