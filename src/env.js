@@ -1,3 +1,3 @@
 export default {
-  baseUrl: "https://",
+  baseUrl: "https://api.hgbrasil.com",
 };
