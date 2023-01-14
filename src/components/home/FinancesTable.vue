@@ -60,7 +60,7 @@
   </div>
 </template>
 <script>
-import { mapGetters, mapActions, mapState } from "vuex";
+import { mapGetters, mapState } from "vuex";
 import LineChartDialog from "./LineChartDialog";
 
 export default {
@@ -97,18 +97,10 @@ export default {
     },
   },
   // beforeDestroy() {
-  //   this.$store.commit("home/setFinanceData", []);
+  //   this.$store.commit("home/setCurrencies", []);
   // },
-  async mounted() {
-    await this.getData();
-  },
+
   methods: {
-    ...mapActions("home", ["requestFinanceData"]),
-
-    async getData() {
-      await this.requestFinanceData();
-    },
-
     openLineChartDialog(buy, sell) {
       var variation = {};
       variation.Compra = buy;

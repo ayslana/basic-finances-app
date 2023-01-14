@@ -1,5 +1,5 @@
 export default {
-  financeData: [],
+  financeData: {},
   bitcoin: [],
   currencies: [],
   stocks: [],
