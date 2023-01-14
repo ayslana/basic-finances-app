@@ -1,12 +1,12 @@
 export default {
-  async register({ commit, getters, dispatch }, payload) {
+  async register({ commit, getters }, payload) {
     commit("setIsLoading", true);
     let successObj = {
       successStatus: true,
       successMessage: "Usuário registrado com sucesso",
     };
     try {
-      const loginsRegistered = getters("getRegistedUsers").map((i) => i.login);
+      const loginsRegistered = getters["getRegistedUsers"].map((i) => i.login);
       if (loginsRegistered.includes(payload.login)) {
         let errorObj = {
           errorStatus: true,
@@ -18,7 +18,7 @@ export default {
         commit("notifications/setSuccessNotification", successObj, {
           root: true,
         });
-        await dispatch("login/login", payload);
+        commit("setRegisteredUser", payload);
       }
     } catch (e) {
       let errorObj = {
