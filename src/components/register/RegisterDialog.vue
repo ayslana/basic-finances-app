@@ -29,12 +29,11 @@
           <v-row justify="center" class="py-3 mx-3">
             <v-col cols="12" sm="12" md="8" lg="12" xl="12">
               <v-text-field
-                v-model="modelRegister.email"
-                label="E-mail"
+                v-model="modelRegister.login"
+                label="Login"
                 outlined
                 dense
                 required
-                :rules="emailRules"
               ></v-text-field>
             </v-col>
           </v-row>
@@ -46,7 +45,6 @@
                 outlined
                 dense
                 required
-                :rules="passwordRules"
                 :type="showPassword ? 'text' : 'password'"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="showPassword = !showPassword"
@@ -56,17 +54,16 @@
           <v-row justify="center" class="py-3 mx-3">
             <v-col cols="12" sm="12" md="8" lg="12" xl="12">
               <v-text-field
-                v-model="confimPassword"
+                v-model="confirmPassword"
                 label="Confirmar Senha"
                 outlined
                 dense
                 required
-                :rules="passwordRules"
                 :type="showPassword ? 'text' : 'password'"
                 :append-icon="showPassword ? 'mdi-eye' : 'mdi-eye-off'"
                 @click:append="showPassword = !showPassword"
               ></v-text-field>
-              <span v-show="passwordDivergence" class="primary"
+              <span v-show="passwordDivergence" class="primary--text"
                 >As senhas devem ser iguais.</span
               >
             </v-col>
@@ -81,10 +78,9 @@
                 rounded
                 x-large
                 block
-                class="white--text"
+                class="white--text login"
                 style="text-transform: none !important; font-weight: bolder"
                 :disabled="disabledField"
-                :color="hover ? 'secondary' : 'login'"
                 :loading="isLoading"
                 @click="sendRegister()"
                 >Cadastrar
@@ -103,16 +99,17 @@ export default {
   data: () => ({
     showPassword: false,
     modelRegister: {
-      email: "",
+      login: "",
       password: "",
     },
     confirmPassword: "",
+    isLoading: false,
     passwordDivergence: false,
   }),
   watch: {
     confirmPassword: {
       handler(newValue) {
-        newValue.confirmPassword = !this.modelRegister.password
+        newValue != this.modelRegister.password
           ? (this.passwordDivergence = true)
           : (this.passwordDivergence = false);
       },
@@ -123,10 +120,11 @@ export default {
   methods: {
     ...mapActions("register", ["register"]),
 
-    sendRegister() {
-      this.modelRegister.password === this.modelRegister.confirmPassword
-        ? this.register
-        : "";
+    async sendRegister() {
+      this.isloading = true;
+      this.register(this.modelRegister);
+      this.isloading = false;
+      this.closeRegisterDialog();
     },
 
     closeRegisterDialog() {
@@ -136,9 +134,9 @@ export default {
   computed: {
     disabledField() {
       if (
-        this.modelRegister.email === "" ||
+        this.modelRegister.login === "" ||
         this.modelRegister.password === "" ||
-        this.modelRegister.confirmPassword === "" ||
+        this.confirmPassword === "" ||
         this.modelRegister.password != this.confirmPassword
       ) {
         return true;
