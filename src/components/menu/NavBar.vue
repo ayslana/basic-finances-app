@@ -12,7 +12,6 @@
         @click="darkMode"
         class="mt-5"
       ></v-switch>
-      <span class="text--text text-body-1"> {{ getUserName }}</span>
     </v-app-bar>
   </v-card>
 </template>
@@ -31,7 +30,6 @@ export default {
     this.darkModeOn();
   },
   computed: {
-    ...mapGetters("login", ["getUserName"]),
     ...mapGetters("menu", ["getDarkMode"]),
   },
   methods: {
