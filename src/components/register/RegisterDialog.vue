@@ -21,7 +21,7 @@
         >
           <v-row justify="center" class="py-3 mx-3">
             <v-col cols="12" sm="12" md="8" lg="12" xl="12">
-              ><span class="text-h3 login--text font-weight-bold"
+              <span class="text-h3 login--text font-weight-bold"
                 >WorldWallet</span
               >
             </v-col>
