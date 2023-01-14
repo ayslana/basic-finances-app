@@ -7,5 +7,7 @@ export default {
 
   getStocks: (state) => state.stocks,
 
+  getTaxes: (state) => state.taxes,
+
   getIsLoading: (state) => state.isLoading,
 };

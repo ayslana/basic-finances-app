@@ -1,6 +1,6 @@
 <template>
-  <div class="my-8" v-if="getCurrencies">
-    <v-card-title class="text-h6 text--text">Câmbio de Moedas </v-card-title>
+  <div class="my-8" v-if="getBitcoin">
+    <v-card-title class="text-h6 text--text">Bitcoin</v-card-title>
     <v-data-table
       :headers="headers"
       :single-select="singleSelect"
@@ -64,7 +64,7 @@ import { mapGetters, mapActions, mapState } from "vuex";
 import LineChartDialog from "./LineChartDialog";
 
 export default {
-  name: "FinancesTable",
+  name: "CriptoTable",
   components: {
     LineChartDialog,
   },
@@ -87,10 +87,10 @@ export default {
     singleSelect: false,
   }),
   computed: {
-    ...mapGetters("home", ["getCurrencies"]),
-    ...mapState("home", ["currencies"]),
+    ...mapGetters("home", ["getBitcoin"]),
+    ...mapState("home", ["bitcoin"]),
     dataTableComponent() {
-      return this.getCurrencies;
+      return this.getBitcoin;
     },
     getDataTable() {
       return this.dataTableComponent;

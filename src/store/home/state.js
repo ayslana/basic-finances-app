@@ -3,5 +3,6 @@ export default {
   bitcoin: [],
   currencies: [],
   stocks: [],
+  taxes: [],
   isLoading: false,
 };

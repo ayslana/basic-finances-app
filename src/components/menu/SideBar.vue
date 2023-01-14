@@ -9,8 +9,11 @@
       id="sidebar"
     >
       <v-list dense nav>
-        <div class="white--text text-h6 my-12">
-          <span class="white--text">Olá,</span> {{ getUserData.login }}.
+        <div
+          class="white--text text-h6 my-12 d-none d-sm-none d-md-block d-lg-block d-xl-block"
+        >
+          <span class="white--text">Olá,</span>
+          {{ getUserData.login }}.
         </div>
         <v-list-item-group color="primary" v-model="itemSelected" mandatory>
           <v-list-item
