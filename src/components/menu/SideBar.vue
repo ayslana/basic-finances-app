@@ -9,12 +9,10 @@
       id="sidebar"
     >
       <v-list dense nav>
-        <v-list-item-group
-          class="py-12"
-          color="primary"
-          v-model="itemSelected"
-          mandatory
-        >
+        <div class="white--text text-h6 my-12">
+          <span class="white--text">Olá,</span> {{ getUserData.login }}.
+        </div>
+        <v-list-item-group color="primary" v-model="itemSelected" mandatory>
           <v-list-item
             v-for="(item, i) in items"
             :key="i"
@@ -47,7 +45,7 @@
 </template>
 <script>
 import router from "@/router";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "SibeBarComponent",
@@ -65,7 +63,7 @@ export default {
     };
   },
   methods: {
-    ...mapActions("login", ["logout"]),
+    ...mapActions("auth", ["logout"]),
 
     redirect(url) {
       const atual = router.currentRouter;
@@ -78,6 +76,8 @@ export default {
     },
   },
   computed: {
+    ...mapGetters("auth", ["getUserData"]),
+
     miniResponsive() {
       return this.$vuetify.breakpoint.smAndDown;
     },

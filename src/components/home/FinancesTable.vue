@@ -1,6 +1,6 @@
 <template>
   <div class="my-8" v-if="getCurrencies">
-    <v-card-title class="text-h6 text--text">Câmbio das Moedas </v-card-title>
+    <v-card-title class="text-h6 text--text">Câmbio de Moedas </v-card-title>
     <v-data-table
       :headers="headers"
       :single-select="singleSelect"

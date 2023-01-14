@@ -1,8 +1,9 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import VuexPersistence from "vuex-persist";
-import login from "./auth";
 import notifications from "./notifications";
+import register from "./register";
+import auth from "./auth";
 import menu from "./menu";
 import home from "./home";
 
@@ -15,8 +16,9 @@ const vuexLocal = new VuexPersistence({
 export default new Vuex.Store({
   modules: {
     namespaced: true,
-    login,
     notifications,
+    register,
+    auth,
     menu,
     home,
   },

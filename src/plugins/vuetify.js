@@ -10,7 +10,7 @@ export default new Vuetify({
       light: {
         primary: "#232B59",
         secondary: "#5864A6",
-        accent: "#82B1FF",
+        accent: "#F23568",
         error: "#FF5252",
         info: "#2196F3",
         success: "#4CAF50",
@@ -33,7 +33,7 @@ export default new Vuetify({
         base: "#161724",
         base_dark: "#11121C",
         text: "#EEEEEE",
-        login: "#161724",
+        login: "#232B59",
       },
     },
   },
