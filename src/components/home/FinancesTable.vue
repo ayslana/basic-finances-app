@@ -19,7 +19,7 @@
       </template>
       <template v-slot:[`item.buy`]="{ item }">
         <v-chip color="transparent">
-          {{ item.buy }}
+          {{ item.buy ? item.buy : "-" }}
         </v-chip>
       </template>
       <template v-slot:[`item.sell`]="{ item }">
