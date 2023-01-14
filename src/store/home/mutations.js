@@ -12,7 +12,7 @@ export default {
       return response.bitcoin[key];
     });
     bitcoinMapped = bitcoinMapped.slice(1);
-    
+
     state.bitcoin = bitcoinMapped;
     state.stocks = response.stocks;
     state.taxes = response.taxes;
